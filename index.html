@@ -13,6 +13,7 @@
       --text-muted: #52525b;
       --accent: #0ea5e9;
       --border: #e4e4e7;
+      --hover-bg: #f8fafc;
     }
 
     /* Reset and Base Styles */
@@ -21,7 +22,7 @@
 
     /* The Bento Box Grid */
     .container { 
-      max-width: 1000px; 
+      max-width: 1050px; 
       margin: 0 auto; 
       display: grid; 
       grid-template-columns: repeat(3, 1fr); 
@@ -45,6 +46,7 @@
     .edu-card { grid-column: span 1; }
     .cocurr-card { grid-column: span 2; }
     .interest-card { grid-column: span 1; }
+    .blog-card { grid-column: span 3; }
     
     /* Typography */
     h1 { font-size: 2.5rem; margin-bottom: 0.5rem; letter-spacing: -0.03em; }
@@ -66,13 +68,52 @@
     .timeline-item:last-child { margin-bottom: 0; }
     .item-title { font-weight: 600; color: var(--text-main); }
     .item-sub { font-size: 0.85rem; color: var(--accent); font-weight: 500; display: block; margin-bottom: 0.2rem;}
-    ul.custom-list { padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 0.8rem; }
-    ul.custom-list li strong { color: var(--text-main); }
+    
+    ul.custom-list { padding-left: 1.2rem; color: var(--text-muted); font-size: 0.95rem; display: flex; flex-direction: column; gap: 1rem; }
+    ul.custom-list li strong { color: var(--text-main); font-weight: 700; }
+    
+    /* Blog Section Specifics */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .article-preview {
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .article-preview:hover {
+      background-color: var(--hover-bg);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+    .article-date {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .article-title {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
 
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .container { grid-template-columns: 1fr; }
-      .header-card, .about-card, .skills-card, .exp-card, .edu-card, .cocurr-card, .interest-card { grid-column: span 1; }
+      .header-card, .about-card, .skills-card, .exp-card, .edu-card, .cocurr-card, .interest-card, .blog-card { grid-column: span 1; }
+      .blog-grid { grid-template-columns: 1fr; }
       body { padding: 1rem; }
       .card { padding: 1.5rem; }
     }
@@ -112,7 +153,6 @@
         <span class="tag">Data Analysis & Excel</span>
         <span class="tag">Strategic Planning</span>
         <span class="tag">Creative Problem Solving</span>
-        <span class="tag">EdTech Content</span>
       </div>
     </div>
 
@@ -121,7 +161,7 @@
       <h2>Professional Experience</h2>
       <div class="timeline-item">
         <span class="item-title">Math Instructor</span> | QEC Cadet Coaching
-        <span class="item-sub">April 2025 - Present</span>
+        <span class="item-sub">April 2025 - March 2026</span>
         <p>Delivering customized Math lessons focusing on breaking down complex problems. Diagnosing student weaknesses in core concepts and creating targeted practice plans that improved exam readiness.</p>
       </div>
       <div class="timeline-item">
@@ -155,21 +195,50 @@
     <div class="card cocurr-card">
       <h2>Co-Curricular Activities</h2>
       <ul class="custom-list">
-        <li><strong>Secretary of Marketing & Publicity</strong> (Chittagong College ECA Club): Directed publicity strategies that increased student participation during the pandemic and managed high-volume online meetings efficiently.</li>
-        <li><strong>Volunteer</strong> (International Conference on the Future of Business): Managed guest relations for international delegates and coordinated logistics for executive panel discussions.</li>
-        <li><strong>Volunteer</strong> (University Convocation): Managed on-ground logistics and crowd control for the university ceremony, directing guest flow to ensure a structured event.</li>
+        <li><strong>Secretary of Marketing & Publicity</strong> at the <strong>Chittagong College ECA Club</strong>: Directed publicity strategies that increased student participation during the pandemic and managed high-volume online meetings efficiently.</li>
+        <li><strong>Volunteer</strong> for the <strong>International Conference on the Future of Business</strong>: Managed guest relations for international delegates and coordinated logistics for executive panel discussions.</li>
+        <li><strong>Volunteer</strong> at the <strong>University Convocation</strong>: Managed on-ground logistics and crowd control for the university ceremony, directing guest flow to ensure a structured event.</li>
       </ul>
     </div>
 
-    <!-- Interests -->
+    <!-- Interests & Networking -->
     <div class="card interest-card">
-      <h2>Interests</h2>
-      <ul class="custom-list">
-        <li><strong>Financial Markets:</strong> Digital assets and gold-backed securities (PAXG).</li>
-        <li><strong>Retail Banking & Fintech:</strong> Liquidity management and digital procurement.</li>
-        <li><strong>Agri-Fintech & SME:</strong> Agricultural supply chain digitization (iFarmer, Biniyog.io).</li>
-        <li><strong>Strategic Planning:</strong> Event logistics and resource allocation.</li>
+      <h2>Let's Connect Over</h2>
+      <p style="margin-bottom: 1rem;">I am always open to discussing ideas, exchanging insights, and collaborating on:</p>
+      <ul class="custom-list" style="gap: 0.5rem;">
+        <li><strong>Agri-Fintech & SMEs:</strong> The future of supply chain digitization (e.g., iFarmer, Biniyog.io).</li>
+        <li><strong>Digital Assets:</strong> Modern portfolio allocation and gold-backed securities (PAXG).</li>
+        <li><strong>FinTech Operations:</strong> Retail banking liquidity and digital procurement frameworks.</li>
       </ul>
+    </div>
+
+    <!-- Blog / Articles Section -->
+    <div class="card blog-card">
+      <h2>Insights & Articles</h2>
+      <p>Thoughts on student finance, digital investments, and navigating the Bangladesh FinTech ecosystem.</p>
+      
+      <div class="blog-grid">
+        <!-- Article 1 -->
+        <a href="#" class="article-preview">
+          <span class="article-date">Coming Soon</span>
+          <div class="article-title">Navigating Student Banking in Bangladesh: Tips & Tricks</div>
+          <p>A practical guide to maximizing student accounts, managing liquidity, and minimizing hidden fees.</p>
+        </a>
+
+        <!-- Article 2 -->
+        <a href="#" class="article-preview">
+          <span class="article-date">Coming Soon</span>
+          <div class="article-title">The Rise of Agri-Fintech: Why I Invest in Digital Agriculture</div>
+          <p>Exploring the potential of platforms like iFarmer and Biniyog.io to transform SME financing.</p>
+        </a>
+
+        <!-- Article 3 -->
+        <a href="#" class="article-preview">
+          <span class="article-date">Coming Soon</span>
+          <div class="article-title">Assessing the Current Investment Climate in Bangladesh</div>
+          <p>Observations on market trends, traditional asset allocation, and the transition toward digital assets.</p>
+        </a>
+      </div>
     </div>
 
   </div>
