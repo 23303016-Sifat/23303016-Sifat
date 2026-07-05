@@ -11,7 +11,7 @@ title: MD Shahriar Alam Sifat | Blog
       
       <!-- This loop automatically fetches all your Markdown posts! -->
       {% for post in site.posts %}
-      <a href="{{ post.url }}" style="border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 12px; text-decoration: none; display: block; background: #ffffff; height: 100%;">
+    <a href="{{ post.url | relative_url }}" style="border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 12px; text-decoration: none; display: block; background: #ffffff; height: 100%;">
         <span style="font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: block;">{{ post.date | date: "%B %d, %Y" }}</span>
         <div style="font-size: 1.15rem; color: #0f172a; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4;">{{ post.title }}</div>
         <p style="font-size: 0.95rem; color: #64748b;">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
