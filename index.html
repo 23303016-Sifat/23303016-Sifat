@@ -5,12 +5,12 @@ title: MD Shahriar Alam Sifat | Blog
 <div class="container">
   <div class="main-card">
     <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 700; color: var(--text-main);">The Digital Sandbox</h1>
-    <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);">A collection of tech experiments, personal thoughts, digital finance and everyday problem solving by <a href="{{ '/about.html' | relative_url }}" style="color: var(--accent); text-decoration: none; font-weight: 600;">MD Shahriar Alam Sifat</a>.</p>
+    <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);">A collection of tech experiments, digital finance and everyday problem solving by <a href="{{ '/about.html' | relative_url }}" style="color: var(--accent); text-decoration: none; font-weight: 600;">MD Shahriar Alam Sifat</a>. I use this sandbox to document my journey through software optimizations, market trends and the creative ways I troubleshoot daily challenges.</p>
     
     {% for post in site.posts %}
     <div class="post-box">
       <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-      <a href="{{ post.url | relative_url }}" class="post-title">{{ post.title }}</a>
+      <a href="{{ post.url | relative_url }}" class="post-title" style="color: var(--accent); font-weight: 600; text-decoration: none; transition: 0.2s;">{{ post.title }}</a>
       <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
     </div>
     {% endfor %}
