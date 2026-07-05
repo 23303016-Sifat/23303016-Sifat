@@ -38,10 +38,10 @@
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="/" class="{% if page.url == '/' %}active{% endif %}">Blog</a>
-    <a href="/news.html" class="{% if page.url contains 'news' %}active{% endif %}">News</a>
-    <a href="/about.html" class="{% if page.url contains 'about' %}active{% endif %}">About Me</a>
+ <nav class="navbar">
+    <a href="/23303016-Sifat/" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">Blog</a>
+    <a href="/23303016-Sifat/news.html" class="{% if page.url contains 'news' %}active{% endif %}">News</a>
+    <a href="/23303016-Sifat/about.html" class="{% if page.url contains 'about' %}active{% endif %}">About Me</a>
   </nav>
 
   <!-- This magic tag injects your content into this frame -->
