@@ -14,26 +14,32 @@
     .navbar a:hover { color: var(--accent); }
     .navbar a.active { color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
 
-    .container { max-width: 1050px; margin: 3rem auto; padding: 0 1.5rem; }
-    .header-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; }
+    .container { max-width: 850px; margin: 3rem auto; padding: 0 1.5rem; }
     
-    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 700; }
-    p.subtitle { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
-
-    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .article-preview { border: 1px solid var(--border); padding: 1.5rem; border-radius: 12px; text-decoration: none; display: block; transition: all 0.2s ease; background: var(--card-bg); height: 100%;}
-    .article-preview:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
-    .article-date { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; display: block; }
-    .article-title { font-size: 1.15rem; color: var(--text-main); font-weight: 600; margin-bottom: 0.5rem; line-height: 1.4; }
-    .article-desc { font-size: 0.95rem; color: var(--text-muted); }
+    /* Blog Post Styles */
+    .article-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 3rem; margin-bottom: 2rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); }
+    .article-date { font-size: 0.85rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; display: block; }
+    .article-card h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 1.5rem; font-weight: 800; color: #0f172a; }
+    .article-card h3 { font-size: 1.3rem; margin: 2rem 0 1rem 0; font-weight: 700; color: #1e293b; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;}
+    .article-card p { margin-bottom: 1.2rem; font-size: 1.05rem; color: #334155; }
+    .article-card strong { color: #0f172a; font-weight: 700; }
+    
+    .article-card ol, .article-card ul { margin-bottom: 1.5rem; padding-left: 1.5rem; font-size: 1.05rem; color: #334155; }
+    .article-card li { margin-bottom: 0.5rem; }
+    
+    /* Terminal Code Block Styles */
+    pre { background: #0f172a; color: #f8fafc; padding: 1.2rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; font-size: 0.95rem; line-height: 1.5; border: 1px solid #334155; }
+    code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace; }
+    
+    /* Important Note Box */
+    .note-box { background: #eff6ff; border-left: 4px solid var(--accent); padding: 1.5rem; border-radius: 0 8px 8px 0; margin-top: 2rem; }
+    .note-box p:last-child { margin-bottom: 0; }
 
     @media (max-width: 768px) { 
-      /* Mobile Navbar Fixes */
       .navbar { padding: 1rem 0.5rem; gap: 0.8rem; flex-wrap: wrap; justify-content: center; } 
       .navbar a { font-size: 0.8rem; letter-spacing: 0.02em; }
-      
-      /* Mobile Layout Fixes */
-      .blog-grid { grid-template-columns: 1fr; } 
+      .article-card { padding: 1.5rem; }
+      .article-card h1 { font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -45,23 +51,75 @@
   </nav>
 
   <div class="container">
-    <div class="header-card">
-      <h1>The Operational Blog</h1>
-      <p class="subtitle">Personal thoughts, system optimization logs, and everyday problem-solving.</p>
+    
+    <!-- Full Blog Post -->
+    <article class="article-card">
+      <span class="article-date">July 5, 2026</span>
+      <h1>How to Sideload Android Apps on Chrome OS (Without Wiping Your Data)</h1>
       
-      <div class="blog-grid">
-        <a href="#" class="article-preview">
-          <span class="article-date">Coming Soon</span>
-          <div class="article-title">Navigating Student Banking in Bangladesh: Tips & Tricks</div>
-          <p class="article-desc">A highly practical guide to maximizing student accounts, managing liquidity, and minimizing hidden fees for university students.</p>
-        </a>
-        <a href="#" class="article-preview">
-          <span class="article-date">Coming Soon</span>
-          <div class="article-title">Troubleshooting Elementor: Quick Fixes for Common Layout Bugs</div>
-          <p class="article-desc">A technical log of common UI breaks I encountered while managing university club sites and the exact steps I took to fix them.</p>
-        </a>
+      <p>If you have ever tried to install a third-party Android APK directly from the browser on a Chromebook or Chrome OS tablet, you have probably hit a wall: <em>"Turn on Chrome OS Developer Mode to install apps from sources other than the Play Store."</em></p>
+      
+      <p>The official Google prompt tells you to enable Developer Mode—but doing so triggers a Powerwash, completely wiping your local data and disabling OS verification.</p>
+      
+      <p>Fortunately, there is a much better, safer way to sideload APKs using the built-in Linux development environment. Here is how to bypass the factory reset and install any Android app using ADB.</p>
+
+      <h3>The Prerequisite: Enable Linux</h3>
+      <p>Before starting, ensure your Chrome OS device supports the Linux environment.</p>
+      <ol>
+        <li>Go to <strong>Settings > Advanced > Developers</strong>.</li>
+        <li>Turn on the <strong>Linux development environment</strong>.</li>
+        <li>Follow the on-screen prompts and leave the disk size at its default setting. The installation will take a few minutes.</li>
+      </ol>
+
+      <h3>Step 1: Enable ADB Debugging</h3>
+      <p>Once Linux is running, you need to create a bridge between the Linux container and the Chrome OS Android subsystem.</p>
+      <ol>
+        <li>Navigate back to <strong>Settings > Advanced > Developers</strong>.</li>
+        <li>Click on <strong>Linux development environment</strong>.</li>
+        <li>Select <strong>Develop Android apps</strong>.</li>
+        <li>Toggle on <strong>Enable ADB debugging</strong>.</li>
+        <li>Your device will prompt you to restart. Accept it, and when the device boots back up, confirm the ADB debugging prompt on your screen.</li>
+      </ol>
+
+      <h3>Step 2: Install ADB Tools in the Terminal</h3>
+      <p>Open your app launcher and start the <strong>Terminal</strong> app. Click on the penguin icon to open the command line.</p>
+      
+      <p>First, update your package list:</p>
+<pre><code>sudo apt update</code></pre>
+
+      <p>Next, install the ADB (Android Debug Bridge) platform tools:</p>
+<pre><code>sudo apt install adb -y</code></pre>
+
+      <h3>Step 3: Prepare Your APK File</h3>
+      <p>For security reasons, Chrome OS isolates your downloaded files from the Linux terminal. You have to manually move your APK into the Linux ecosystem.</p>
+      <ol>
+        <li>Open the Chrome OS <strong>Files</strong> app.</li>
+        <li>Locate your downloaded APK in the <strong>Downloads</strong> folder.</li>
+        <li>Rename the file to something simple with no spaces (e.g., <code>appname.apk</code>). <em>Note: Linux is strictly case-sensitive, so keeping it all lowercase saves headaches later.</em></li>
+        <li>Drag and drop the renamed APK into the <strong>Linux files</strong> folder on the left sidebar.</li>
+      </ol>
+
+      <h3>Step 4: Connect and Install</h3>
+      <p>Head back to your terminal. Sometimes, the Linux container fails to automatically detect the internal Android emulator. We can force the connection using Chrome OS's standard internal IP for this bridge.</p>
+      
+      <p>Run this command:</p>
+<pre><code>adb connect 100.115.92.2:5555</code></pre>
+
+      <p>Immediately look at your screen. A pop-up will appear asking, <em>"Allow USB debugging?"</em> Check the box that says <strong>"Always allow from this computer"</strong> and click <strong>OK</strong>.</p>
+      
+      <p>Now, push the install command:</p>
+<pre><code>adb install appname.apk</code></pre>
+
+      <p>Once the terminal outputs <strong>Success</strong>, you are done! You can close the terminal, and your newly sideloaded app will be waiting for you in your standard Chrome OS app drawer.</p>
+
+      <div class="note-box">
+        <strong>Important Note: The Lock Screen Warning</strong>
+        <p>After successfully setting this up, you will notice a permanent warning on your lock screen: <em>"This device may contain apps that haven't been verified by Google."</em></p>
+        <p>This is completely normal. Because you opened an ADB loophole to bypass the Play Store, Chrome OS is just doing its job by notifying you that standard security is relaxed.</p>
+        <p><strong>Do not turn off ADB debugging to get rid of the message!</strong> If you toggle ADB debugging off in your settings, Chrome OS will instantly factory-reset the Android subsystem for security, completely deleting any apps you just sideloaded. Leave it on, ignore the text, and enjoy your apps.</p>
       </div>
-    </div>
+
+    </article>
   </div>
 </body>
 </html>
