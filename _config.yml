@@ -1,3 +1,4 @@
 name: MD Shahriar Alam Sifat
 markdown: kramdown
 permalink: /:year/:month/:title.html
+baseurl: "/23303016-Sifat"
